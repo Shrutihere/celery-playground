@@ -1,0 +1,1 @@
+CELERY_IMPORTS = ['app.worker.celery_worker']
