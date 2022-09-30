@@ -6,6 +6,7 @@ Install celery : pip install celery
 ## Execution
 Run the celery worker server : celery -A tasks worker --loglevel=INFO <br />
 For specific queue : celery -A app.worker.celery_app worker --loglevel=info -Q test-queue <br />
+Run celery beat : celery -A app.worker.celery_app beat --loglevel=INFO -s celery_file<br />
 <br />
 Run celery server using Flower : celery -A app.worker.celery_app flower --port=5555<br />
 Url to Flower : http://localhost:5555/dashboard<br />
@@ -16,6 +17,7 @@ Run main.py for endpoints<br />
 Tasks can be scheduled in two ways :<br />
 send_tasks - uses 'task_name' to add task to the queue<br />
 apply_async - uses function name; can provide 'eta' as time for execution<br />
+celery beat used for scheduling recurring tasks (check celery_app.py). Next step: make it dynamic <br />
 
 
 ## References

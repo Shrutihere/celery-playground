@@ -2,7 +2,7 @@ import os
 import uvicorn
 import logging
 from fastapi import FastAPI, BackgroundTasks
-from worker.celery_app import celery
+from worker.celery_app import celery, schedule
 from worker.celery_worker import test_celery
 from datetime import datetime, timedelta
 
@@ -37,12 +37,12 @@ async def root(word: str, background_task: BackgroundTasks):
 
 
 # Funtion takes time in seconds and execute task after x seconds
-@app.get("/time/{time}")
-async def root(time: int, background_task: BackgroundTasks):
+@app.get("/time/{time}/{word}")
+async def root(time: int, word:str, background_task: BackgroundTasks):
 
     # set correct task name based on the way you run the example
     eta = datetime.utcnow() + timedelta(seconds=time)
-    res = test_celery.apply_async(["gooooooo", time],eta=eta)
+    res = test_celery.apply_async([word],eta=eta)
     background_task.add_task(background_on_message, res)
 
     return {"message": "Executed"}
