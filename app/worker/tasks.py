@@ -1,5 +1,5 @@
 from celery import Task
-from dateutil.rrule import rrulestr
+from dateutil.rrule import rrulestr, rrule
 
 from .schedule import (
     CancelSchedule,
@@ -52,8 +52,26 @@ class RepeatTask(Task):
             return result
 
         # Preserve the start and end of rrule cycle.
-        rrule_ = rrulestr(rrule_string).replace(dtstart=first_eta,
-                                                until=until)
+        # rrule_ = rrulestr(rrule_string).replace(dtstart=first_eta,
+                                                # until=until)
+
+        rrule_ = rrule(
+            freq=rrule_string["freq"],
+            dtstart=first_eta,
+            interval=rrule_string["interval"],
+            wkst=rrule_string["wkst"],
+            until=until,
+            bysetpos=rrule_string["bysetpos"],
+            bymonth=rrule_string["bymonth"],
+            bymonthday=rrule_string["bymonthday"],
+            byyearday=rrule_string["byyearday"],
+            byweekday=rrule_string["byweekday"],
+            byweekno=rrule_string["byweekno"],
+            byhour=rrule_string["byhour"],
+            byminute=rrule_string["byminute"],
+            bysecond=rrule_string["bysecond"],
+
+        )
 
         next_eta = TaskScheduler.calculate_next_eta(rrule_=rrule_,
                                                     current_eta=eta)

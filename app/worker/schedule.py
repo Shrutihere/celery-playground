@@ -26,6 +26,7 @@ class TaskScheduler(object):
         """
         return _datetime.strftime(cls.DATE_FORMAT) if _datetime else None
 
+
     @classmethod
     def strptime(cls, _datetime_string):
         """Returns a datetime instance from its string format. The
@@ -63,8 +64,14 @@ class TaskScheduler(object):
             uuid: Scheduled task ID.
         """
 
-        now = datetime.utcnow() + timedelta(seconds=11)
-        _trigger_at = trigger_at or now
+        now = datetime.utcnow() + timedelta(seconds=1)
+        # _trigger_at = trigger_at or now
+        if rrule_string and rrule_string.dtstart:
+            rrule_string = rrule_string.dict()
+            _trigger_at =  datetime.utcfromtimestamp(int(rrule_string.get("dtstart", None)))
+        else:
+            _trigger_at = now
+
 
         kwargs = kwargs or dict()
         kwargs.update({
@@ -75,7 +82,7 @@ class TaskScheduler(object):
             'until': TaskScheduler.strftime(until),
         })
 
-        scheduled_task_id = func.apply_async(eta=trigger_at, args=args, kwargs=kwargs)
+        scheduled_task_id = func.apply_async(eta=_trigger_at, args=args, kwargs=kwargs)
         return scheduled_task_id
 
     # @staticmethod
