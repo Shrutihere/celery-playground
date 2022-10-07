@@ -1,7 +1,7 @@
 from celery import Celery
 
-# celery = Celery('worker', broker='pyamqp://guest@localhost//')
-celery = Celery('worker', broker='pyamqp://guest@rabbitmq//')
+celery = Celery('worker', broker='pyamqp://guest@localhost//')
+# celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@rabbitmq//')
 
 
 celery.conf.task_routes = {
