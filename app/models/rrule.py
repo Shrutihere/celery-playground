@@ -4,6 +4,8 @@ from typing import List, Union
 from pydantic import BaseModel, validator
 from fastapi import FastAPI, BackgroundTasks
 
+from app.adapters.notifications.methods.edvora_notification import EdvoraNotification
+
 
 
 
@@ -47,8 +49,5 @@ class RRule(BaseModel):
 
 class Task(BaseModel):
     rrule: RRule = None
-    word: str
-    auth: str
-    inserted_id: List[str]
-    classroom_id: str
-    # background_task: BackgroundTasks
+    start_datetime: int
+    notification_metadata: dict

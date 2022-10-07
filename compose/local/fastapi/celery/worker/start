@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-celery -A app.worker.celery_app worker --loglevel=info -Q test-queue
+celery -A app.worker.celery_app worker --loglevel=info -Q test-queue 

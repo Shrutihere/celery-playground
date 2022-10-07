@@ -25,11 +25,13 @@ async def root(input: Task, background_task: BackgroundTasks):
     task_id = TaskScheduler.schedule(
             func=test_celery,
             description='Test task',
-            args=[input.word],
+            trigger_at=input.start_datetime,
+            args=["there it is"],
             kwargs={
-                "auth":input.auth,
-                "inserted_id": input.inserted_id,
-                "classroom_id": input.classroom_id
+                # "auth":input.auth,
+                # "inserted_id": input.inserted_id,
+                # "classroom_id": input.classroom_id
+                "notification_metadata": input.notification_metadata
             },
             rrule_string=input.rrule,
         )

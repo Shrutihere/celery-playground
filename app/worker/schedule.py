@@ -65,10 +65,8 @@ class TaskScheduler(object):
         """
 
         now = datetime.utcnow() + timedelta(seconds=1)
-        # _trigger_at = trigger_at or now
-        if rrule_string and rrule_string.dtstart:
-            rrule_string = rrule_string.dict()
-            _trigger_at =  datetime.utcfromtimestamp(int(rrule_string.get("dtstart", None)))
+        if trigger_at:
+            _trigger_at = datetime.utcfromtimestamp(trigger_at)
         else:
             _trigger_at = now
 
