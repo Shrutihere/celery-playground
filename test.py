@@ -25,7 +25,9 @@ body = {
 },
   "word": "string",
   "auth":"lkfeo",
-  "inserted_id": "jkdsiwjeoij"
+  "inserted_id": ["jkdsiwjeoij"],
+  "classroom_id": "jkdsiwjeoij"
+
 }
 
 headers = {

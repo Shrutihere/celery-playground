@@ -1,6 +1,8 @@
 from celery import Celery
 
-celery = Celery('worker', broker='pyamqp://guest@localhost//')
+# celery = Celery('worker', broker='pyamqp://guest@localhost//')
+celery = Celery('worker', broker='pyamqp://guest@rabbitmq//')
+
 
 celery.conf.task_routes = {
         "app.worker.celery_worker.test_celery": "test-queue"}
