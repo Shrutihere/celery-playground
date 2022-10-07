@@ -19,6 +19,10 @@ send_tasks - uses 'task_name' to add task to the queue<br />
 apply_async - uses function name; can provide 'eta' as time for execution<br />
 celery beat used for scheduling recurring tasks (check celery_app.py). Next step: make it dynamic <br />
 
+## Docker commands
+Build docker image : docker-compose build<br />
+Run image : docker-compose up -d <br />
+See logs : docker-compose logs -f<br />
 
 ## References
 

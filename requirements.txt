@@ -4,6 +4,7 @@ uvicorn==0.15.0
 pymongo==4.2.0
 python_dateutil==2.8.2
 celery==4.4.7
+fastapi
 alembic
 flower==0.9.5
 # eventlet
