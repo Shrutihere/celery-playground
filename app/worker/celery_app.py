@@ -1,7 +1,7 @@
 from celery import Celery
 
-celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@localhost//')
-# celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@rabbitmq//')
+# celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@localhost//')    # running locally
+celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@rabbitmq//')    # running through docker
 
 
 celery.conf.task_routes = {
