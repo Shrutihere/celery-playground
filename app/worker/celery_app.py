@@ -1,6 +1,6 @@
 from celery import Celery
 
-celery = Celery('worker', broker='pyamqp://guest@localhost//')
+celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@localhost//')
 # celery = Celery('worker', backend='rpc://', broker='pyamqp://guest@rabbitmq//')
 
 

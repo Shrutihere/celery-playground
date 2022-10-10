@@ -20,7 +20,7 @@ def background_on_message(task):
 
 @router.post("/remind_me")
 async def root(input: Task, background_task: BackgroundTasks):
-    print(input)
+    # print(input)
     
     task_id = TaskScheduler.schedule(
             func=test_celery,
@@ -28,14 +28,12 @@ async def root(input: Task, background_task: BackgroundTasks):
             trigger_at=input.start_datetime,
             args=["there it is"],
             kwargs={
-                # "auth":input.auth,
-                # "inserted_id": input.inserted_id,
-                # "classroom_id": input.classroom_id
                 "notification_metadata": input.notification_metadata
             },
             rrule_string=input.rrule,
         )
     print(task_id)
+    # await app.mongodb.user_data.classroom_notification.insert_one(notification)
     background_task.add_task(background_on_message, task_id)
 
     return {"message": "success"}

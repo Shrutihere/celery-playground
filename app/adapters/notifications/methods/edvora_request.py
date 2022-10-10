@@ -11,7 +11,7 @@ from typing import List
 from app.models.ObjectId import ObjectId
 # from rich import print
 from app.constants import TIMELINE_NOTIFICATION_ENDPOINT_PROD
-
+from app.adapters.notifications.routers.notifications import classroom_notification
 #
 # Local imports
 #
@@ -65,16 +65,19 @@ class EdvoraRequest:
 
         body = body
         try:
+            print("=========================1111111111111111111111=======================")
 
-            req = requests.post(
-                url=self.endpoint,
-                headers={
-                    "Authorization": self.auth_headers,
-                },
-                json=body,
-            )
+            # req = requests.post(
+            #     url=self.endpoint,
+            #     headers={
+            #         "Authorization": self.auth_headers,
+            #     },
+            #     json=body,
+            # )
+            classroom_notification(body)
 
-            req.raise_for_status()
+            # req.raise_for_status()
+
 
         except requests.exceptions.HTTPError as err:
             print({"Notification Error": err, "Method": "post_request"})

@@ -102,12 +102,13 @@ class EdvoraNotification:
             auth_headers=self.auth_header,
             endpoint=self.endpoint_url,
         )
-        print(self.notification.dict())
+        # print(self.notification.dict())
+        print("==========================================000000000000000000000000000000000=======================")
 
         try:
 
             client.post_request(
-                body=self.notification.dict(),
+                body=self.notification,
             )
 
         except Exception as exception:

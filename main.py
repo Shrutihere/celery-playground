@@ -6,9 +6,23 @@ import logging
 from fastapi import FastAPI
 from app.config import settings
 from app.routers.schedule_tasks import router as tasks_router
+import firebase_admin
+from firebase_admin import credentials
+from motor.motor_asyncio import AsyncIOMotorClient
 
 
 app = FastAPI(title="Celery API", version=settings.VERSION)
+
+
+
+@app.on_event("startup")
+async def startup_db_client():
+    # app.mongodb = AsyncIOMotorClient(settings.MONGODB_URL)
+    # app.firebase = firebase_admin.initialize_app(
+    #     credentials.Certificate(settings.GOOGLE_APP_CREDENTIALS)
+    # )
+    pass
+
 
 
 app.include_router(tasks_router)
