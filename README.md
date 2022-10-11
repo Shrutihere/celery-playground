@@ -21,12 +21,16 @@ List of running containers : `docker container ls` <br />
 Stop a server : `docker stop <.container_id.>` <br />
 
 ## Celery Concepts
-Tasks can be scheduled in two ways :<br />
+### Introduction
+Celery is generally used for XYZ we use it for scheduling (repeating) jobs that are to be run at a (list of) date(s) in future. <i> Describe celery architecture here </i> <br /> <i> Describe what is rabbitMQ and how it works with celery </i> <br /> 
+### Integration with FastAPI Server
+Explain the genral architecture of how an endpoint in FastAPI interacts with a celery server application  <br /> 
+### Scheduling and Executing jobs
+Explain how that works here in some more detail <br /> 
+<br /> Tasks can be scheduled in two ways :<br />
 `send_tasks` - uses 'task_name' to add task to the queue<br />
 `apply_async` - uses function name; can provide 'eta' as time for execution<br />
 celery beat used for scheduling recurring tasks (check celery_app.py). Next step: make it dynamic <br />
-
-
 
 ## Flow
 
