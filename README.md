@@ -12,7 +12,7 @@ Run celery server using Flower : celery -A app.worker.celery_app flower --port=5
 Url to Flower : http://localhost:5555/dashboard<br />
 <br />
 Run main.py for endpoints<br />
-
+ 
 ## Execution using Docker commands 
 Build docker image : docker-compose build<br />
 Run image : docker-compose up -d <br />

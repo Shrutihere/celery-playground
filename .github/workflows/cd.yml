@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 env:
-  DOCKER_IMAGE: registry.digitalocean.com/edvora-test-registry/meet-backend:${{ github.sha }}
+  DOCKER_IMAGE: registry.digitalocean.com/edvora-test-registry/scheduler-api-default:latest
 
 jobs:
   build:
