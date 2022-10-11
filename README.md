@@ -1,5 +1,5 @@
 # task-scheduler
-A short description of this repository goes here
+This repository contains the endpoints to schedule a task (Edvora Notification) at a specific time or repeating in a pattern based on the RRules.
 
 ## Local Setup - Development
 Install rabbitmq : `sudo apt-get install rabbitmq-server` <br />
@@ -22,15 +22,19 @@ Stop a server : `docker stop <.container_id.>` <br />
 
 ## Celery Concepts
 ### Introduction
-Celery is generally used for XYZ we use it for scheduling (repeating) jobs that are to be run at a (list of) date(s) in future. <i> Describe celery architecture here </i> <br /> <i> Describe what is rabbitMQ and how it works with celery </i> <br /> 
+Celery is generally used as a task queue to run the tasks asynchronously, we use it for scheduling (repeating) jobs that are to be run at a (list of) date(s) in future. <i> Celery Architecture </i> <br />
+Web (Fastapi): Provide APIs to receive requests.<br />
+Broker (RabbitMQ) : A queue for scheduled jobs.<br />
+Worker : Servers which pick up tasks to be executed.<br />
+Results Backend : To store the task results.<br />
+<br /> 
+<i> RabbitMQ is an open source message broker - an intermediary for messaging. Celery is a Task Queue software which uses RabbitMQ as a broker to know the status of the tasks in progress </i> <br /> 
+
 ### Integration with FastAPI Server
-Explain the genral architecture of how an endpoint in FastAPI interacts with a celery server application  <br /> 
+The fastapi app receives the request<br /> 
 ### Scheduling and Executing jobs
 Explain how that works here in some more detail <br /> 
-<br /> Tasks can be scheduled in two ways :<br />
-`send_tasks` - uses 'task_name' to add task to the queue<br />
-`apply_async` - uses function name; can provide 'eta' as time for execution<br />
-celery beat used for scheduling recurring tasks (check celery_app.py). Next step: make it dynamic <br />
+
 
 ## Flow
 
