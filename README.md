@@ -3,7 +3,7 @@
 Install rabbitmq : sudo apt-get install rabbitmq-server<br />
 Install celery : pip install celery
 
-## Execution [ locally ]
+## Local Setup - Development
 Run the celery worker server : celery -A tasks worker --loglevel=INFO <br />
 For specific queue : celery -A app.worker.celery_app worker --loglevel=info -Q test-queue <br />
 Run celery beat : celery -A app.worker.celery_app beat --loglevel=INFO -s celery_file<br />
@@ -13,7 +13,7 @@ Url to Flower : http://localhost:5555/dashboard<br />
 <br />
 Run main.py for endpoints<br />
  
-## Execution using Docker commands 
+## Dockersizing - Production
 Build docker image : docker-compose build<br />
 Run image : docker-compose up -d <br />
 See logs : docker-compose logs -f<br />
