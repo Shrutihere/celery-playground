@@ -34,4 +34,4 @@ celery beat used for scheduling recurring tasks (check celery_app.py). Next step
 <<For laypersons/ testers/ frontend teams>>
 
 ### Data Flow
-<<For developer>>
+For backend developers to understand how remind me works end to end
