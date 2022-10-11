@@ -15,7 +15,7 @@ spec:
         k8s-app: scheduler-backend
     spec:
       containers:
-        - image: registry.digitalocean.com/edvora-test-registry/scheduler-api-default:bc223ef247bb4dbb7d091fd7bc71ec28acc20298
+        - image: registry.digitalocean.com/edvora-test-registry/scheduler-api-default:520668515473b5602cfdb07af5e1a049c0783d4e
           imagePullPolicy: Always
           name: backend
           ports:
