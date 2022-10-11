@@ -20,10 +20,10 @@ See logs : docker-compose logs -f<br />
 List of running containers : docker container ls<br />
 Stop a server : docker stop <.container_id.><br />
 
-## Points to note
+## Celery Concepts
 Tasks can be scheduled in two ways :<br />
-send_tasks - uses 'task_name' to add task to the queue<br />
-apply_async - uses function name; can provide 'eta' as time for execution<br />
+`send_tasks` - uses 'task_name' to add task to the queue<br />
+`apply_async` - uses function name; can provide 'eta' as time for execution<br />
 celery beat used for scheduling recurring tasks (check celery_app.py). Next step: make it dynamic <br />
 
 
