@@ -14,7 +14,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 app = FastAPI(title="Celery API", version=settings.VERSION)
 
 
-
 @app.on_event("startup")
 async def startup_db_client():
     # app.mongodb = AsyncIOMotorClient(settings.MONGODB_URL)
@@ -22,7 +21,6 @@ async def startup_db_client():
     #     credentials.Certificate(settings.GOOGLE_APP_CREDENTIALS)
     # )
     pass
-
 
 
 app.include_router(tasks_router)
