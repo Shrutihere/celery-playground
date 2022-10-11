@@ -1,9 +1,9 @@
 # task-scheduler
-## Steps to setup
-Install rabbitmq : sudo apt-get install rabbitmq-server<br />
-Install celery : pip install celery
+A short description of this repository goes here
 
 ## Local Setup - Development
+Install rabbitmq : sudo apt-get install rabbitmq-server
+Install celery : pip install celery
 Run the celery worker server : celery -A tasks worker --loglevel=INFO <br />
 For specific queue : celery -A app.worker.celery_app worker --loglevel=info -Q test-queue <br />
 Run celery beat : celery -A app.worker.celery_app beat --loglevel=INFO -s celery_file<br />
