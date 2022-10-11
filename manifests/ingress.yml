@@ -14,10 +14,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        -  # ADD HERE
+        - scheduler.api.edvora.me
       secretName: scheduler-certs
   rules:
-    - host: # ADD HERE
+    - host: scheduler.api.edvora.me
       http:
         paths:
           - path: /

@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: # ADD HERE
+  name: scheduler-backend
   labels:
-    k8s-app: # ADDD HERE
+    k8s-app: scheduler-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: #ADD HERE
+      k8s-app: scheduler-backend
   template:
     metadata:
       labels:
-        k8s-app: # ADD HERE
+        k8s-app: scheduler-backends
     spec:
       containers:
         - image: #ADDD HEREEEE
