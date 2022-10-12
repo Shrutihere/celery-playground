@@ -31,15 +31,40 @@ Results Backend : To store the task results.<br />
 <i> RabbitMQ is an open source message broker - an intermediary for messaging. Celery is a Task Queue software which uses RabbitMQ as a broker to know the status of the tasks in progress </i> <br /> 
 
 ### Integration with FastAPI Server
-The fastapi app receives the request<br /> 
+The fastapi app receives the request and uses TaskScheduker to schedule a task.<br /> 
 ### Scheduling and Executing jobs
-Explain how that works here in some more detail <br /> 
+1. Request to schedule a `task` is sent through API
+2. `Taskscheduler` is used to schedule the task
+
+`TaskScheduler.schedule(func, description, args=None, kwargs=None, rrule_string=None, trigger_at=None, until=None)` <br /> 
 
 
 ## Flow
-
 ### User Flow
-<<For laypersons/ testers/ frontend teams>>
+`notification_metadata` : <br /> 
+| Variable | Type |
+| --- | --- |
+| `auth_header` | `str` |
+| `title` | `str` |
+| `body` | `str` |
+| `item_id` | `str` |
+| `created_at` | `int` |
+| `created_by` | `str` |
+| `classroom_id` | `str` |
+| `kind` | `int` |
+
+
+
+`Task` : <br /> 
+| Variable | Type |
+| --- | --- |
+| `rrule` | `RRule` |
+| `start_datetime` | `int` |
+| `notification_metadata` | `notification_metadata` |
+
+`/remind_me` : Request endpoint, takes `Task` as input<br /> 
 
 ### Data Flow
-For backend developers to understand how remind me works end to end
+`apply_async` - a celery function to schedule a task to the celery worker; `eta` can be defined as a parameter.<br />
+`TaskScheduler` uses generated `eta` from the rrule and uses `apply_sync` to send the task to the queue.<br />
+
