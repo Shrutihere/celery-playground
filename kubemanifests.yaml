@@ -84,8 +84,6 @@ items:
             io.kompose.service: celery-worker
         spec:
           containers:
-            - args:
-                - /start-celeryworker
               env:
                 - name: CELERY_BROKER_URL
                   valueFrom:
@@ -158,8 +156,6 @@ items:
             io.kompose.service: flower
         spec:
           containers:
-            - args:
-                - /start-flower
               env:
                 - name: CELERY_BROKER_URL
                   value: pyamqp://guest@rabbitmq//
@@ -250,8 +246,6 @@ items:
             io.kompose.service: web
         spec:
           containers:
-            - args:
-                - /start
               env:
                 - name: CELERY_BROKER_URL
                   valueFrom:
