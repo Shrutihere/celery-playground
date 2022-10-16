@@ -53,3 +53,17 @@ import time
 mytime = time.time()
 print(mytime+360)
 print(datetime.utcfromtimestamp(mytime))
+
+
+######################################################################
+
+# kubectl get po
+# kubectl logs web-5dbc755554-2jjtd --namespace=shruti
+# kubectl apply -f kubemanifests.yaml --namespace=shruti
+# kubectl proxy
+# kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+# kubectl create secret generic regcred --from-file=.dockerconfigjson=C:\Users\shruti\.docker\config.json --type=kubernetes.io/dockerconfigjson
+# 127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=shruti
+
+# VSCode live share :
+# https://vscode.dev/liveshare/BB578078DC3603581B0936252867BCA4AF50
